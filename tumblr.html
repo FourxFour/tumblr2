@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Space</title>
+
+
+<link rel="stylesheet" type="text/css" href="http://static.tumblr.com/myialb2/9iQnx9tv1/reset.css">
+<link rel="stylesheet" type="text/css" href="http://static.tumblr.com/myialb2/eFinx9tv0/grid.css">
+
+<meta name="image:Background" content="http://static.tumblr.com/..."/>
+<script src ="http://static.tumblr.com/myialb2/8mKnx9y55/jquery.js"></script>
+</head>
+
+
+<style>
+    .index_page{
+        background: #2D567C url('{image:Background}');
+        height: 500px;
+    }
+    .description{
+        font-size: 200%;
+        color: yellow;
+    }
+    .menu{
+        background-color: black;
+        height: 125px;
+    }
+</style>
+
+<body>
+<div class = "container">
+		<div class = "row1">
+			<div class = "header">
+				<header>
+					<div class = "four columns">
+						<p>icon</p>
+					</div>
+					<div class = "four columns">
+						<h1>My Site Name:{title}</h1>
+					</div>
+					<div class = "four columns">
+						<form action="/search" method="get">
+						 <input type="text" name="q" value="{SearchQuery}" maxlength="5"/>			 <input type="submit" value="Search"/>
+						</form>
+							{block:SearchPage}
+								
+							{block:SearchPage}
+					</div>	
+				</header>	
+		    </div>
+		</div> 
+		
+		<div class = "row2">
+		    <div class = "twelve columns">
+		        <div class = "index_page">
+		            {block:Description}
+		            <h1 class = "description">
+		                {Description}
+		            </h1>
+		            {/block:Description}
+		        </div>
+		    </div>
+		</div>
+		<div class = "row3">
+		    <div class = "twelve columns">
+		        
+		        <block:HasPages>
+		            <div class ="menu">
+		                <ul>
+		                    <li><a href = "/">Home</a></li>
+		                    <block:Pages>
+		                    <li><a href = "{URL}">{Label}</a></li>
+		                    </block:Pages>
+		                </ul>
+		            </div>
+		       </block>
+		    </div>
+		</div>
+		
+		
+		{block:Posts}
+		    <div class = "three columns" >
+		        <div class = "side_bar">
+		            <img src="{PortraitURL-128}"/>
+                    <h1>
+                        More Infomation
+                    </h1>
+		            {block:Date}
+		                <a href="{Permalink}"><h5>Date is: <time>{Month}{DayOfMonthWithZero},{Year}</time></h5></a>	
+		            {/block:date}
+		        </div>
+		    </div>
+		    
+		    <div class = "eight columns">
+		    
+		                <h1> {PostType}</h1>
+		        {block:Text}
+                    <li class="post text">
+                        {block:Title}
+                            <h3><a href="{Permalink}">{Title}</a></h3>
+                        {/block:Title}{Body}
+                    </li>
+                {/block:Text}
+                {block:Photo}
+                    <li class="post photo">
+                        <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+
+                        {block:Caption}
+                            <div class="caption">{Caption}</div>
+                        {/block:Caption}
+                    </li>
+                {/block:Photo}
+		    </div>
+		    <hr>
+		{/block:Posts}
+		
+		
+</div>
+</body>
+
+</html>
